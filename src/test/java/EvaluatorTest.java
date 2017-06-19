@@ -39,8 +39,19 @@ public class EvaluatorTest {
         Ranking result = evaluator.evaluate(cardList);
         assertThat(result, is(Ranking.Flush));
     }
-
-
+    @Test
+    public void RANK_5개가_1_10_11_12_13이면_마운틴이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(1,Suit.DIAMONDS),
+                new Card(10,Suit.HEARTS),
+                new Card(11,Suit.DIAMONDS),
+                new Card(12,Suit.CLUBS),
+                new Card(13,Suit.HEARTS)
+        );
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.Mountian));
+    }
     @Test
     public void RANK가_연속적인_숫자이면_스트레이트다() {
         Evaluator evaluator = new Evaluator();
