@@ -1,7 +1,7 @@
 /**
  * Created by SUDALKIM on 2017-06-19.
  */
-public class Suit {
+public enum Suit {
     SPADES,
     HEARTS,
     CLUBS,
