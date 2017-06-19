@@ -37,6 +37,12 @@ public class Evaluator {
             }
         } // 플러쉬
 
+        for(Integer key : tempMap2.keySet()) {
+            if (tempMap2.containsKey(1) && tempMap2.containsKey(10) && tempMap2.containsKey(11) && tempMap2.containsKey(12) && tempMap2.containsKey(13)) {
+                return Ranking.Mountian;
+            }
+        } // 마운틴
+
         for (int i = 0; i < tempCard.size()-1; i ++){
             if(tempCard.get(0).getRank() == 1) {
                 if (tempCard.get(i).getRank() + 1 == tempCard.get(i + 1).getRank()) {
