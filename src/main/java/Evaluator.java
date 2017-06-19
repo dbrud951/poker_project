@@ -31,6 +31,15 @@ public class Evaluator {
             }
         }
 
+        for (Integer key : tempMap2.keySet()) {
+            if (tempMap2.get(key) == 2) {
+                for (Integer key2 : tempMap2.keySet()) {
+                    if (tempMap2.get(key2) == 3)
+                        return Ranking.FullHouse;
+                }
+            }
+        } // 풀하우스
+
         for (Suit key : tempMap.keySet()) {
             if (tempMap.get(key) == 5) {
                 flush=true;
