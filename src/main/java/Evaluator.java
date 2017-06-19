@@ -7,7 +7,7 @@ import java.util.Map;
  */
 public class Evaluator {
     public Ranking evaluate(List<Card> cardList) {
-
+        boolean flush=false;
         boolean straight=false;
 
         Map<Suit, Integer> tempMap = new HashMap<Suit, Integer>();
@@ -30,6 +30,12 @@ public class Evaluator {
                 tempMap2.put(card.getRank(),new Integer(1));
             }
         }
+
+        for (Suit key : tempMap.keySet()) {
+            if (tempMap.get(key) == 5) {
+                flush=true;
+            }
+        } // 플러쉬
 
         for (int i = 0; i < tempCard.size()-1; i ++){
             if (tempCard.get(i).getRank() + 1== tempCard.get(i + 1).getRank()) {
