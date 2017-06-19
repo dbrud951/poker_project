@@ -12,6 +12,21 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class EvaluatorTest {
 
     @Test
+    public void SUIT가_5개가동일하고_RANK가_연속적인_숫자이면_스트레이트플러쉬이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(2,Suit.DIAMONDS),
+                new Card(4,Suit.DIAMONDS),
+                new Card(3,Suit.DIAMONDS),
+                new Card(6,Suit.DIAMONDS),
+                new Card(5,Suit.DIAMONDS)
+        );
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.StraightFlush));
+    }
+
+
+    @Test
     public void SUIT가_5개가동일하면_플러쉬다() {
         Evaluator evaluator = new Evaluator();
         List<Card> cardList = Arrays.asList(
