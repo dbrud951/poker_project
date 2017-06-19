@@ -62,16 +62,27 @@ public class Evaluator {
         }//트리플
 
         int sameCard = 0; //카드 한쌍(숫자 같은거) 갯수 세는 변수
+
         for (Integer key : tempMap2.keySet()) {
             if (tempMap2.get(key) == 2) {
                 sameCard++;
             }
         }
+
         if (sameCard == 1) {
             return Ranking.OnePair;
         } else if (sameCard == 2) {
             return Ranking.TwoPairs;
         }
+
+        if(flush==true&&straight==true) {
+            return Ranking.StraightFlush;
+        }else if (flush==true&&straight==false){
+            return Ranking.Flush;
+        }else if(flush==false&& straight==true){
+            return Ranking.Straight;
+        }
+
         return Ranking.Nopair;
     }
 }
