@@ -9,6 +9,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class DeckTest {
 
     @Test
+    public void Deck5개의_총카드수는_260(){
+        Deck deck = new Deck(5);
+        int totalCard = deck.getTotalCard();
+        assertThat(totalCard, is(260));
+    }
+
+    @Test
     public void Deck2개의_총카드수는_104(){
         Deck deck = new Deck(2);
         int totalCard = deck.getTotalCard();
