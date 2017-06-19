@@ -29,4 +29,15 @@ public class DeckTest {
         assertThat(deck.getTotalCard(), is(51));
     }
 
+    @Test(expected = NoMoreCardException.class)
+    public void 카드_없으면_에러발생() {
+        Deck deck = new Deck(1);
+        for (int i = 0; i < 52; i++) {
+            Card card = deck.drawCard();
+            System.out.println(card.getRank());
+            System.out.println(card.getSuit());
+        }
+        deck.drawCard();
+    }
+
 }
