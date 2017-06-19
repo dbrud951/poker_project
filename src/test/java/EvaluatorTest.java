@@ -10,6 +10,65 @@ import static org.hamcrest.MatcherAssert.assertThat;
  * Created by minyoung on 2017-06-20.
  */
 public class EvaluatorTest {
+
+    @Test
+    public void SUIT가_5개가동일하고_RANK가_연속적인_숫자이면_스트레이트플러쉬이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(2,Suit.DIAMONDS),
+                new Card(4,Suit.DIAMONDS),
+                new Card(3,Suit.DIAMONDS),
+                new Card(6,Suit.DIAMONDS),
+                new Card(5,Suit.DIAMONDS)
+        );
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.StraightFlush));
+    }
+
+
+    @Test
+    public void SUIT가_5개가동일하면_플러쉬다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(1,Suit.CLUBS),
+                new Card(4,Suit.CLUBS),
+                new Card(8,Suit.CLUBS),
+                new Card(13,Suit.CLUBS),
+                new Card(2,Suit.CLUBS)
+        );
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.Flush));
+    }
+
+
+    @Test
+    public void RANK가_연속적인_숫자이면_스트레이트다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(5,Suit.DIAMONDS),
+                new Card(4,Suit.HEARTS),
+                new Card(3,Suit.DIAMONDS),
+                new Card(6,Suit.CLUBS),
+                new Card(2,Suit.DIAMONDS)
+        );
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.Straight));
+    }
+
+    @Test
+    public void RANK가_A로_시작하는_연속적인_숫자이면_백스트레이트다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(5,Suit.DIAMONDS),
+                new Card(4,Suit.HEARTS),
+                new Card(3,Suit.DIAMONDS),
+                new Card(1,Suit.CLUBS),
+                new Card(2,Suit.DIAMONDS)
+        );
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.BackStraight));
+    }
+
     @Test
     public void RANK가_3개가동일하면_트리플이다() {
         Evaluator evaluator = new Evaluator();
