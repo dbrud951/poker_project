@@ -32,7 +32,7 @@ public class Evaluator {
         }
 
         for (int i = 0; i < tempCard.size()-1; i ++){
-            if (tempCard.get(i).getRank() + 2== tempCard.get(i + 1).getRank()) {
+            if (tempCard.get(i).getRank() + 1== tempCard.get(i + 1).getRank()) {
                 if (i == tempCard.size()-2) {
                     straight=true;
                 }
