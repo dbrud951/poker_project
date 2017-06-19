@@ -28,6 +28,11 @@ public class Evaluator {
                 tempMap2.put(card.getRank(),new Integer(1));
             }
         }
+        for (Integer key : tempMap2.keySet()) {
+            if (tempMap2.get(key) == 3) {
+                return Ranking.ThreeOfaKind;
+            }
+        }//트리플
 
         int sameCard = 0; //카드 한쌍(숫자 같은거) 갯수 세는 변수
         for (Integer key : tempMap2.keySet()) {
