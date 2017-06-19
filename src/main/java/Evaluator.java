@@ -38,6 +38,16 @@ public class Evaluator {
         } // 플러쉬
 
         for (int i = 0; i < tempCard.size()-1; i ++){
+            if(tempCard.get(0).getRank() == 1) {
+                if (tempCard.get(i).getRank() + 1 == tempCard.get(i + 1).getRank()) {
+                    if (i == tempCard.size() - 2) {
+                        return Ranking.BackStraight;
+                    }
+                }
+            }
+        }//백스트레이트
+
+        for (int i = 0; i < tempCard.size()-1; i ++){
             if (tempCard.get(i).getRank() + 1== tempCard.get(i + 1).getRank()) {
                 if (i == tempCard.size()-2) {
                     straight=true;
