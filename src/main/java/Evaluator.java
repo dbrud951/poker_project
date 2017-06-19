@@ -31,11 +31,26 @@ public class Evaluator {
             }
         }
 
+        for (Integer key : tempMap2.keySet()) {
+            if (tempMap2.get(key) == 2) {
+                for (Integer key2 : tempMap2.keySet()) {
+                    if (tempMap2.get(key2) == 3)
+                        return Ranking.FullHouse;
+                }
+            }
+        } // 풀하우스
+
         for (Suit key : tempMap.keySet()) {
             if (tempMap.get(key) == 5) {
                 flush=true;
             }
         } // 플러쉬
+
+        for(Integer key : tempMap2.keySet()) {
+            if (tempMap2.containsKey(1) && tempMap2.containsKey(10) && tempMap2.containsKey(11) && tempMap2.containsKey(12) && tempMap2.containsKey(13)) {
+                return Ranking.Mountian;
+            }
+        } // 마운틴
 
         for (int i = 0; i < tempCard.size()-1; i ++){
             if(tempCard.get(0).getRank() == 1) {
