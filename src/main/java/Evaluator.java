@@ -8,6 +8,8 @@ import java.util.Map;
 public class Evaluator {
     public Ranking evaluate(List<Card> cardList) {
 
+        boolean straight=false;
+
         Map<Suit, Integer> tempMap = new HashMap<Suit, Integer>();
         Map<Integer,Integer> tempMap2 = new HashMap<Integer, Integer>();
         List<Card> tempCard = cardList;
@@ -28,6 +30,15 @@ public class Evaluator {
                 tempMap2.put(card.getRank(),new Integer(1));
             }
         }
+
+        for (int i = 0; i < tempCard.size()-1; i ++){
+            if (tempCard.get(i).getRank() + 2== tempCard.get(i + 1).getRank()) {
+                if (i == tempCard.size()-2) {
+                    straight=true;
+                }
+            }
+        }//스트레이트
+
         for (Integer key : tempMap2.keySet()) {
             if (tempMap2.get(key) == 3) {
                 return Ranking.ThreeOfaKind;
