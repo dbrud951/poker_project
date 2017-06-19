@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +31,34 @@ public class Evaluator {
                 tempMap2.put(card.getRank(),new Integer(1));
             }
         }
+
+        Collections.sort(tempCard);
+
+        for(Integer key2 : tempMap2.keySet()) {
+            for (Suit key : tempMap.keySet()) {
+                if (tempMap.get(key) == 5) {
+                    if (tempMap2.containsKey(1) && tempMap2.containsKey(10) && tempMap2.containsKey(10) && tempMap2.containsKey(12) && tempMap2.containsKey(13)) {
+                        return Ranking.RoyalStraightFlush;
+                    }
+                }
+            }
+        } // 로얄스트레이트플러쉬
+
+        for(Integer key2 : tempMap2.keySet()) {
+            for (Suit key : tempMap.keySet()) {
+                if (tempMap.get(key) == 5) {
+                    if (tempMap2.containsKey(1) && tempMap2.containsKey(2) && tempMap2.containsKey(3) && tempMap2.containsKey(4) && tempMap2.containsKey(5)) {
+                        return Ranking.BackStraightFlush;
+                    }
+                }
+            }
+        } // 백스트레이트플러쉬
+
+        for (Integer key : tempMap2.keySet()) {
+            if (tempMap2.get(key) == 4) {
+                return Ranking.FourOfaKind;
+            }
+        }//포카드
 
         for (Integer key : tempMap2.keySet()) {
             if (tempMap2.get(key) == 2) {

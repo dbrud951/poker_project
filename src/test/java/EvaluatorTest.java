@@ -12,6 +12,34 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class EvaluatorTest {
 
     @Test
+    public void SUIT가_5개가동일하고_RANK_5개가_1_10_11_12_13이면_로얄스트레이트플러쉬이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(1,Suit.CLUBS),
+                new Card(10,Suit.CLUBS),
+                new Card(11,Suit.CLUBS),
+                new Card(12,Suit.CLUBS),
+                new Card(13,Suit.CLUBS)
+        );
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.RoyalStraightFlush));
+    }
+
+    @Test
+    public void Suit가_같고_RANK_5개가_1_2_3_4_5면_백스트레이트플러쉬이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(1,Suit.DIAMONDS),
+                new Card(2,Suit.DIAMONDS),
+                new Card(3,Suit.DIAMONDS),
+                new Card(4,Suit.DIAMONDS),
+                new Card(5,Suit.DIAMONDS)
+        );
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.BackStraightFlush));
+    }
+
+    @Test
     public void SUIT가_5개가동일하고_RANK가_연속적인_숫자이면_스트레이트플러쉬이다() {
         Evaluator evaluator = new Evaluator();
         List<Card> cardList = Arrays.asList(
@@ -23,6 +51,20 @@ public class EvaluatorTest {
         );
         Ranking result = evaluator.evaluate(cardList);
         assertThat(result, is(Ranking.StraightFlush));
+    }
+
+    @Test
+    public void RANK가_4개가동일하면_포카드다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(10,Suit.DIAMONDS),
+                new Card(10,Suit.HEARTS),
+                new Card(10,Suit.SPADES),
+                new Card(10,Suit.CLUBS),
+                new Card(2,Suit.DIAMONDS)
+        );
+        Ranking result = evaluator.evaluate(cardList);
+        assertThat(result, is(Ranking.FourOfaKind));
     }
 
     @Test
