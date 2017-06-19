@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +31,8 @@ public class Evaluator {
                 tempMap2.put(card.getRank(),new Integer(1));
             }
         }
+
+        Collections.sort(tempCard);
 
         for(Integer key2 : tempMap2.keySet()) {
             for (Suit key : tempMap.keySet()) {
