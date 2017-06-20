@@ -147,4 +147,9 @@ public class PokerApplication {
 
     }
 
+    static int rankPoker(String ranking){
+        
+    }
+
+
 }
