@@ -91,6 +91,36 @@ public class PokerApplication {
             if(a == 'O'){//open
                 System.out.println("Another Card is Opened...");
             }
+            else if(a == 'G'){//go
+
+                System.out.print("The rest of your cards... : ");
+                for(int i=0;i<userList.size();i++){
+                    System.out.print(userList.get(i).getSuit()+" "+userList.get(i).getRank()+" / ");
+                }
+
+                System.out.println(" ");
+
+                System.out.print("The rest of dealer's cards...: ");
+                for(int i=0;i<dealerList.size();i++){
+                    System.out.print(dealerList.get(i).getSuit()+" "+dealerList.get(i).getRank()+" / ");
+                }
+
+                System.out.println(" ");
+
+                userPoint = rankPoker(userResult);
+                dealerPoint = rankPoker(dealerResult);
+                System.out.println(" You : "+userResult + "\n Dealer : "+dealerResult);
+                if(userPoint > dealerPoint){
+                    System.out.println("You win!");
+                    return 1;
+                }else if(userPoint < dealerPoint){
+                    System.out.println("You Lose!");
+                    return 2;
+                }else{//무승부
+                    System.out.println("Push.");
+                    return 3;
+                }
+            }
 
 
         }
