@@ -55,6 +55,17 @@ public class PokerApplication {
         Hand dealerHand = new Hand(deck, PokerType.FIVE);
         Evaluator evaluator = new Evaluator();
 
+        String userResult;
+        String dealerResult;
+        List<Card> userList = userHand.getCardList();
+        List<Card> dealerList = dealerHand.getCardList();
+
+        int userPoint;
+        int dealerPoint;
+
+        userResult = evaluator.evaluate(userHand.getCardList()).toString();
+        dealerResult = evaluator.evaluate(dealerHand.getCardList()).toString();
+
         Scanner sc = new Scanner(System.in);
 
         while(true) {
@@ -77,6 +88,7 @@ public class PokerApplication {
                     System.out.println("Please respond O or G or D");
                 }
             }while(a != 'O' && a != 'G' && a != 'D');
+
 
         }
 
