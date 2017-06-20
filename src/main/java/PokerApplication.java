@@ -88,6 +88,9 @@ public class PokerApplication {
                     System.out.println("Please respond O or G or D");
                 }
             }while(a != 'O' && a != 'G' && a != 'D');
+            if(a == 'O'){//open
+                System.out.println("Another Card is Opened...");
+            }
 
 
         }
