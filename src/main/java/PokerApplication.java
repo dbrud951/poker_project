@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -45,6 +46,32 @@ public class PokerApplication {
 
         System.out.println("You leave with "+money+".");
         System.out.println("Good Bye!");
+
+    }
+
+    static int playPoker(){
+        Deck deck = new Deck(1);
+        Hand userHand = new Hand(deck, PokerType.FIVE);
+        Hand dealerHand = new Hand(deck, PokerType.FIVE);
+        Evaluator evaluator = new Evaluator();
+        
+        Scanner sc = new Scanner(System.in);
+
+        while(true) {
+            if(userHand.getTotalCard() == 2){
+                System.out.println("You can't open no more cards.");
+            }else{
+                System.out.print("Your cards are : ");
+                Card userCard = userHand.getCard();
+                System.out.println(userCard.getSuit() + " " + userCard.getRank() + " ");
+                System.out.print("Dealer is showing the : ");
+                Card dealerCard = dealerHand.getCard();
+                System.out.println(dealerCard.getSuit() + " " + dealerCard.getRank() + " ");
+            }
+            System.out.println(" O(Open) / G(Go) / D(Die) ? ");
+
+        }
+
 
     }
 
