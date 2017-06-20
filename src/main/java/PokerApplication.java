@@ -120,6 +120,25 @@ public class PokerApplication {
                     System.out.println("Push.");
                     return 3;
                 }
+            }else{//die
+
+                System.out.print("The rest of your cards... : ");
+                for(int i=0;i<userList.size();i++){
+                    System.out.print(userList.get(i).getSuit()+" "+userList.get(i).getRank()+" / ");
+                }
+
+                System.out.println(" ");
+
+                System.out.print("The rest of dealer's cards...: ");
+                for(int i=0;i<dealerList.size();i++){
+                    System.out.print(dealerList.get(i).getSuit()+" "+dealerList.get(i).getRank()+" / ");
+                }
+
+                System.out.println(" ");
+
+                System.out.println(" You : "+userResult + "\n Dealer : "+dealerResult);
+
+                return 4;
             }
 
 
