@@ -55,6 +55,17 @@ public class PokerApplication {
         Hand dealerHand = new Hand(deck, PokerType.FIVE);
         Evaluator evaluator = new Evaluator();
 
+        String userResult;
+        String dealerResult;
+        List<Card> userList = userHand.getCardList();
+        List<Card> dealerList = dealerHand.getCardList();
+
+        int userPoint;
+        int dealerPoint;
+
+        userResult = evaluator.evaluate(userHand.getCardList()).toString();
+        dealerResult = evaluator.evaluate(dealerHand.getCardList()).toString();
+
         Scanner sc = new Scanner(System.in);
 
         while(true) {
@@ -77,10 +88,100 @@ public class PokerApplication {
                     System.out.println("Please respond O or G or D");
                 }
             }while(a != 'O' && a != 'G' && a != 'D');
+            if(a == 'O'){//open
+                System.out.println("Another Card is Opened...");
+            }
+            else if(a == 'G'){//go
+
+                System.out.print("The rest of your cards... : ");
+                for(int i=0;i<userList.size();i++){
+                    System.out.print(userList.get(i).getSuit()+" "+userList.get(i).getRank()+" / ");
+                }
+
+                System.out.println(" ");
+
+                System.out.print("The rest of dealer's cards...: ");
+                for(int i=0;i<dealerList.size();i++){
+                    System.out.print(dealerList.get(i).getSuit()+" "+dealerList.get(i).getRank()+" / ");
+                }
+
+                System.out.println(" ");
+
+                userPoint = rankPoker(userResult);
+                dealerPoint = rankPoker(dealerResult);
+                System.out.println(" You : "+userResult + "\n Dealer : "+dealerResult);
+                if(userPoint > dealerPoint){
+                    System.out.println("You win!");
+                    return 1;
+                }else if(userPoint < dealerPoint){
+                    System.out.println("You Lose!");
+                    return 2;
+                }else{//무승부
+                    System.out.println("Push.");
+                    return 3;
+                }
+            }else{//die
+
+                System.out.print("The rest of your cards... : ");
+                for(int i=0;i<userList.size();i++){
+                    System.out.print(userList.get(i).getSuit()+" "+userList.get(i).getRank()+" / ");
+                }
+
+                System.out.println(" ");
+
+                System.out.print("The rest of dealer's cards...: ");
+                for(int i=0;i<dealerList.size();i++){
+                    System.out.print(dealerList.get(i).getSuit()+" "+dealerList.get(i).getRank()+" / ");
+                }
+
+                System.out.println(" ");
+
+                System.out.println(" You : "+userResult + "\n Dealer : "+dealerResult);
+
+                return 4;
+            }
+
 
         }
 
 
     }
+
+    static int rankPoker(String ranking){//족보의 순위를 정해주는 메소드
+        if(ranking.equals("OnePair")){
+            return 1;
+        }else if(ranking.equals("TwoPairs")){
+            return 2;
+        }else if(ranking.equals("ThreeOfaKind")){
+            return 3;
+        }else if(ranking.equals("Straight")){
+            return 4;
+        }
+        else if(ranking.equals("BackStraight")){
+            return 5;
+        }
+        else if(ranking.equals("Mountian")){
+            return 6;
+        }
+        else if(ranking.equals("Flush")){
+            return 7;
+        }
+        else if(ranking.equals("FullHouse")){
+            return 8;
+        }else if(ranking.equals("FourOfaKind")){
+            return 9;
+        }else if(ranking.equals("StraightFlush")){
+            return 10;
+        }
+        else if(ranking.equals("BackStraightFlush")){
+            return 11;
+        }
+        else if(ranking.equals("RoyalStraightFlush")){
+            return 12;
+        }else{
+            return 0;
+        }
+    }
+
 
 }
