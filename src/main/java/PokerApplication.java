@@ -54,7 +54,7 @@ public class PokerApplication {
         Hand userHand = new Hand(deck, PokerType.FIVE);
         Hand dealerHand = new Hand(deck, PokerType.FIVE);
         Evaluator evaluator = new Evaluator();
-        
+
         Scanner sc = new Scanner(System.in);
 
         while(true) {
@@ -69,6 +69,14 @@ public class PokerApplication {
                 System.out.println(dealerCard.getSuit() + " " + dealerCard.getRank() + " ");
             }
             System.out.println(" O(Open) / G(Go) / D(Die) ? ");
+            char a;
+            do{
+                a = sc.nextLine().charAt(0);
+                a = Character.toUpperCase(a);
+                if(a != 'O' && a != 'G' && a != 'D'){
+                    System.out.println("Please respond O or G or D");
+                }
+            }while(a != 'O' && a != 'G' && a != 'D');
 
         }
 
