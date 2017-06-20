@@ -147,8 +147,40 @@ public class PokerApplication {
 
     }
 
-    static int rankPoker(String ranking){
-        
+    static int rankPoker(String ranking){//족보의 순위를 정해주는 메소드
+        if(ranking.equals("OnePair")){
+            return 1;
+        }else if(ranking.equals("TwoPairs")){
+            return 2;
+        }else if(ranking.equals("ThreeOfaKind")){
+            return 3;
+        }else if(ranking.equals("Straight")){
+            return 4;
+        }
+        else if(ranking.equals("BackStraight")){
+            return 5;
+        }
+        else if(ranking.equals("Mountian")){
+            return 6;
+        }
+        else if(ranking.equals("Flush")){
+            return 7;
+        }
+        else if(ranking.equals("FullHouse")){
+            return 8;
+        }else if(ranking.equals("FourOfaKind")){
+            return 9;
+        }else if(ranking.equals("StraightFlush")){
+            return 10;
+        }
+        else if(ranking.equals("BackStraightFlush")){
+            return 11;
+        }
+        else if(ranking.equals("RoyalStraightFlush")){
+            return 12;
+        }else{
+            return 0;
+        }
     }
 
 
